@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "name": "21",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mt_rate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dayjs": "^1.10.4",
+    "flatten": "^1.0.3",
+    "knex": "^0.21.18",
+    "mysql": "^2.18.1",
+    "node-schedule": "^2.0.0",
+    "qs": "^6.9.6"
+  }
+}
