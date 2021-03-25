@@ -32,11 +32,11 @@ async function main(retry) {
       })
     )
 
-    data = flatten(data)
-
-    const updates = await knx('ele_activity_full_reduction').insert(data.filter(v => v != null))
-    console.log(data)
-    console.log(data.length, data.filter(v => v != null).length, updates, dayjs().format('YYYY-MM-DD'))
+    data = flatten(data).filter(v => v != null)
+    
+    if(data.length < 50) return Promise.reject()
+    const updates = await knx('ele_activity_full_reduction').insert(data)
+    console.log(data.length, updates, dayjs().format('YYYY-MM-DD'))
     return
   } catch (e) {
     console.log('error: ', e)
@@ -44,9 +44,9 @@ async function main(retry) {
   }
 }
 
-main(0)
+// main(0)
 
-let j = schedule.scheduleJob('0 7 * * *', async function (fireDate) {
+let j = schedule.scheduleJob('0 5 * * *', async function (fireDate) {
   console.log('This job was supposed to run at ' + fireDate + ', but actually ran at ' + new Date())
   await main(0)
 })

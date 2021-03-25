@@ -46,7 +46,7 @@ async function main() {
   }
 }
 
-main()
+// main()
 
 let j = schedule.scheduleJob('0 2 * * *', async function (fireDate) {
   console.log('This job was supposed to run at ' + fireDate + ', but actually ran at ' + new Date())
