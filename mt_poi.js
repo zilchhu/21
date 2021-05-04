@@ -10,8 +10,8 @@ export async function mt_shops({ isOpen, keyWord, cities } = {}) {
     let { cookie } = await knx('foxx_shop_reptile').where({ status: 0 }).first()
     let {
       dataList
-    } = await mt.get('v2/shop/businessStatus/r/poiListSearch?pageNum=1&pageSize=300&ignoreSetRouterProxy=true', {
-      headers: { cookie },
+    } = await mt.get('https://waimaie.meituan.com/v2/shop/businessStatus/r/poiListSearch?pageNum=1&pageSize=300&ignoreSetRouterProxy=true', {
+      headers: { cookie, Host: 'waimaie.meituan.com', Origin: 'https://waimaie.meituan.com/' },
       params: { isOpen, keyWord, cities }
     })
     return Promise.resolve(dataList)

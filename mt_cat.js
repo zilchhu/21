@@ -16,7 +16,7 @@ export async function mt_cats_by_shop(wmpoiid) {
   }
 }
 
-export async function mt_cat_by_id_w(wmpoiid, tagid, { name, description, top_flag, tag_type, time_zone, sequence }) {
+export async function mt_cat_by_id_w(wmpoiid, tagid, { name, description, top_flag, tag_type, time_zone, sequence } = {}) {
   try {
     let { cookie } = await knx('foxx_shop_reptile').where({ status: 0, wmpoiid }).first()
     return mt.post(

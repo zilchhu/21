@@ -2,19 +2,19 @@ import axios from 'axios'
 import qs from 'qs'
 
 let mtCfg = {
-  baseURL: 'https://waimaieapp.meituan.com',
+  baseURL: 'https://waimaieapp.meituan.com/',
   responseType: 'json',
   timeout: 5000,
   headers: {
-    Accept: '*/*',
+    Accept: 'application/json, text/plain, */*',
     'Accept-Encoding': 'gzip, deflate, br',
     'Accept-Language': 'zh-CN,zh;q=0.9',
     Connection: 'keep-alive',
-    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-    Host: 'waimaie.meituan.com',
-    Origin: 'https://waimaie.meituan.com',
-    Cookie: '',
-    Referer: 'https://waimaie.meituan.com/v2/shop/manage/shopInfo?ignoreSetRouterProxy=true',
+    'Content-Type': 'application/x-www-form-urlencoded',
+    Host: 'waimaieapp.meituan.com',
+    Origin: 'https://waimaieapp.meituan.com',
+    cookie: '',
+    // Referer: 'https://waimaieapp.meituan.com/igate/wmactpc/activity/list?wmPoiId=2924399&type=100',
     'sec-ch-ua': '"Google Chrome";v="87", " Not;A Brand";v="99", "Chromium";v="87"',
     'sec-ch-ua-mobile': '?0',
     'Sec-Fetch-Dest': 'empty',
@@ -105,8 +105,8 @@ elm.interceptors.request.use(
     config[namespace] = config[namespace] || {}
     config[namespace].data = config.data
     config[namespace].retryCount = config[namespace].retryCount || 0
-    // console.log(config)
-    config.data = qs.stringify(config.data)
+    // console.log(config.data.params)
+    // config.data = qs.stringify(config.data)
     return config
   },
   err => Promise.reject(err)
